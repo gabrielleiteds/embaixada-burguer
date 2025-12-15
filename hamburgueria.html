@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embaixada Burger - Hambúrgueres Artesanais</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Righteous&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #FF6B35;
+            --cor-secundaria: #FFC425;
+            --cor-escura: #1a1a1a;
+            --cor-clara: #f5f5f5;
+            --cor-destaque: #FFE5D9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--cor-escura);
+            color: var(--cor-clara);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1f1f 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--cor-primaria) 0%, transparent 70%);
+            opacity: 0.15;
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--cor-secundaria) 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+            animation: pulse 5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-family: 'Righteous', cursive;
+            font-size: 5rem;
+            color: var(--cor-secundaria);
+            text-shadow: 4px 4px 0px var(--cor-primaria);
+            margin-bottom: 1rem;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--cor-destaque);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(45deg, var(--cor-primaria), var(--cor-secundaria));
+            color: var(--cor-escura);
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 2px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+            position: relative;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cor-primaria), transparent);
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--cor-secundaria);
+            text-shadow: 2px 2px 0px var(--cor-primaria);
+            letter-spacing: 3px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--cor-primaria) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-item:hover::before {
+            opacity: 0.1;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--cor-primaria);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .item-emoji {
+            font-size: 4rem;
+            display: block;
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .menu-item:hover .item-emoji {
+            animation: spin 0.5s ease-in-out;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .item-name {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--cor-secundaria);
+            margin-bottom: 0.5rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .item-description {
+            color: var(--cor-destaque);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .item-price {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--cor-primaria);
+            text-align: center;
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f0f0f;
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--cor-primaria);
+        }
+
+        .footer p {
+            color: var(--cor-destaque);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce-vertical 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce-vertical {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--cor-secundaria);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="logo">🍔 REDE JOVEM - BURGUER</h1>
+            <p class="tagline">Hambúrgueres Artesanais que Conquistam</p>
+            <a href="https://forms.gle/UaSHqLkvvy3dw7Pu6" class="cta-button" target="_blank">FAZER PEDIDO AGORA</a>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Menu Section
+    <section class="menu-section">
+        <h2 class="section-title">NOSSO CARDÁPIO</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <span class="item-emoji">🍔</span>
+                <h3 class="item-name">Classic Burger</h3>
+                <p class="item-description">Hambúrguer artesanal 180g, queijo cheddar, alface, tomate, cebola roxa e molho especial</p>
+                <p class="item-price">R$ 25,00</p>
+            </div>
+
+            <div class="menu-item">
+                <span class="item-emoji">🧀</span>
+                <h3 class="item-name">Cheese Explosion</h3>
+                <p class="item-description">Duplo hambúrguer 180g, queijo cheddar, queijo prato, cream cheese e cebola caramelizada</p>
+                <p class="item-price">R$ 32,00</p>
+            </div>
+
+            <div class="menu-item">
+                <span class="item-emoji">🥓</span>
+                <h3 class="item-name">Bacon Supreme</h3>
+                <p class="item-description">Hambúrguer 180g, bacon crocante, queijo cheddar, cebola crispy e barbecue</p>
+                <p class="item-price">R$ 30,00</p>
+            </div>
+
+            <div class="menu-item">
+                <span class="item-emoji">🌶️</span>
+                <h3 class="item-name">Hot & Spicy</h3>
+                <p class="item-description">Hambúrguer 180g, jalapeños, pimenta calabresa, queijo pepper jack e molho picante</p>
+                <p class="item-price">R$ 28,00</p>
+            </div>
+
+            <div class="menu-item">
+                <span class="item-emoji">🥬</span>
+                <h3 class="item-name">Veggie Delight</h3>
+                <p class="item-description">Hambúrguer vegetariano de grão de bico, queijo, alface, tomate e maionese verde</p>
+                <p class="item-price">R$ 24,00</p>
+            </div>
+
+            <div class="menu-item">
+                <span class="item-emoji">👑</span>
+                <h3 class="item-name">King Burger</h3>
+                <p class="item-description">Triplo hambúrguer 180g, queijo cheddar, bacon, ovo, alface, tomate e molho especial</p>
+                <p class="item-price">R$ 38,00</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>🍔 REDE BURGUER - Hambúrgueres Artesanais © 2025</p>
+        <p>Faça seu pedido e saboreie a melhor experiência!</p>
+    </footer>
+
+    <script>
+        // Animação suave ao scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animação dos itens do menu ao aparecer na tela
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animation = `fadeInUp 0.6s ease-out forwards`;
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.style.opacity = '0';
+            observer.observe(item);
+        });
+    </script>
+</body>
+
+</html>
